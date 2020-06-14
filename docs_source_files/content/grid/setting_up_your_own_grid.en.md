@@ -140,43 +140,48 @@ And here is an example of a `nodeConfig.json` file:
 
 ```json
 {
-  "capabilities": [
+  "capabilities":
+  [
     {
       "browserName": "firefox",
-      "acceptSslCerts": true,
-      "javascriptEnabled": true,
-      "takesScreenshot": false,
-      "firefox_profile": "",
-      "browser-version": "27",
-      "platform": "WINDOWS",
+      "marionette": true,
       "maxInstances": 5,
-      "firefox_binary": "",
-      "cleanSession": true
+      "seleniumProtocol": "WebDriver"
     },
     {
       "browserName": "chrome",
       "maxInstances": 5,
-      "platform": "WINDOWS",
-      "webdriver.chrome.driver": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+      "seleniumProtocol": "WebDriver"
     },
     {
       "browserName": "internet explorer",
-      "maxInstances": 1,
       "platform": "WINDOWS",
-      "webdriver.ie.driver": "C:/Program Files (x86)/Internet Explorer/iexplore.exe"
+      "maxInstances": 1,
+      "seleniumProtocol": "WebDriver"
+    },
+    {
+      "browserName": "safari",
+      "technologyPreview": false,
+      "platform": "MAC",
+      "maxInstances": 1,
+      "seleniumProtocol": "WebDriver"
     }
   ],
-  "configuration": {
-    "_comment" : "Configuration for Node",
-    "cleanUpCycle": 2000,
-    "timeout": 30000,
-    "proxy": "org.openqa.grid.selenium.proxy.WebDriverRemoteProxy",
-    "port": 5555,
-    "host": ip,
-    "register": true,
-    "hubPort": 4444,
-    "maxSession": 5
-  }
+  "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+  "maxSession": 5,
+  "port": -1,
+  "register": true,
+  "registerCycle": 5000,
+  "hub": "http://localhost:4444",
+  "nodeStatusCheckTimeout": 5000,
+  "nodePolling": 5000,
+  "role": "node",
+  "unregisterIfStillDownAfter": 60000,
+  "downPollingLimit": 2,
+  "debug": false,
+  "servlets" : [],
+  "withoutServlets": [],
+  "custom": {}
 }
 ```
 
